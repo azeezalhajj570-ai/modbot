@@ -1,0 +1,41 @@
+services:
+  migrate:
+    volumes:
+      - .:/app
+    environment:
+      PYTHONPATH: /app
+
+  bot:
+    volumes:
+      - .:/app
+    environment:
+      PYTHONPATH: /app
+
+  worker:
+    volumes:
+      - .:/app
+    environment:
+      PYTHONPATH: /app
+
+  backend:
+    volumes:
+      - .:/app
+    command: uvicorn bot.dashboard.api.main:app --host 0.0.0.0 --port 8080 --reload
+
+  miniapp_admin:
+    volumes:
+      - ./miniapps/admin:/app
+      - ./miniapps/shared:/miniapp-shared
+      - /app/node_modules
+
+  miniapp_modbot:
+    volumes:
+      - ./miniapps/modbot:/app
+      - ./miniapps/shared:/miniapp-shared
+      - /app/node_modules
+
+  dashboard:
+    volumes:
+      - ./dashboard:/app/dashboard
+      - ./shared:/app/shared
+      - /app/dashboard/node_modules

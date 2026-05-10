@@ -1,0 +1,13 @@
+{
+  "name": "modbot-standalone",
+  "private": true,
+  "scripts": {
+    "miniapp-modbot:dev": "cd miniapps/modbot && npm run dev",
+    "miniapp-modbot:build": "cd miniapps/modbot && npm run build",
+    "miniapp-admin:dev": "cd miniapps/admin && npm run dev",
+    "miniapp-admin:build": "cd miniapps/admin && npm run build",
+    "dashboard:dev": "cd dashboard && npm run dev",
+    "dashboard:build": "cd dashboard && npm run build",
+    "miniapps:build": "npm run miniapp-modbot:build && npm run miniapp-admin:build && npm run dashboard:build"
+  }
+}

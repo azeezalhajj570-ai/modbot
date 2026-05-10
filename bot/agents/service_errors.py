@@ -1,0 +1,2 @@
+class AgentAuthStateError(ValueError):
+    pass

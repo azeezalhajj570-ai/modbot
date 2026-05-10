@@ -1,0 +1,1 @@
+"""FAQ Auto-Answer plugin."""
