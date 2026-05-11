@@ -206,11 +206,13 @@ GitHub Actions run on:
 | Job                     | Purpose                            |
 | ----------------------- | ---------------------------------- |
 | `lint`                  | Ruff code quality                  |
+| `format`                | Ruff format check                  |
 | `unit`                  | Python unit tests                  |
 | `integration`           | Container-backed integration tests |
 | `miniapp-modbot-build`  | ModBot miniapp frontend build      |
 | `miniapp-admin-build`   | Admin miniapp frontend build       |
 | `dashboard-build`       | Browser dashboard build            |
+| `compose-config`        | Docker Compose config validation   |
 | `docker-build`          | Docker Compose image build         |
 | `migration-check`       | Alembic schema validation          |
 
@@ -238,11 +240,13 @@ Configure the following in your GitHub repository settings
 Select the following checks:
 
 - `lint`
+- `format`
 - `unit`
 - `integration`
 - `miniapp-modbot-build`
 - `miniapp-admin-build`
 - `dashboard-build`
+- `compose-config`
 - `docker-build`
 - `migration-check`
 
@@ -263,6 +267,14 @@ See `.env.example` for the full list. Key variables:
 | `TELEGRAM_API_ID`     | Telegram API ID (for agent accounts) |
 | `TELEGRAM_API_HASH`   | Telegram API hash (for agent accounts) |
 | `BOT_OWNER_IDS`       | Comma-separated Telegram user IDs    |
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for development workflow, commit format, security guidelines, and testing instructions.
+
+Module ownership is defined in [.github/CODEOWNERS](./.github/CODEOWNERS).
 
 ---
 

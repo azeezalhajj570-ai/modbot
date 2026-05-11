@@ -1,0 +1,17 @@
+# CODEOWNERS
+
+# This file assigns code ownership for PR review requests.
+# Add GitHub usernames or team names (e.g., @org/team-name).
+# Uncomment and fill in your actual maintainers.
+
+#* @your-username
+
+#bot/moderation/    @your-username
+#bot/handlers/      @your-username
+#bot/services/      @your-username
+#bot/db/            @your-username
+#alembic/           @your-username
+#dashboard/         @your-username
+#miniapps/          @your-username
+#docker/            @your-username
+#.github/           @your-username
