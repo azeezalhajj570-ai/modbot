@@ -11,11 +11,8 @@ from bot.utils.pagination import Page
 
 def tab_rows(lang: str) -> list[list[str]]:
     return [
-        [f"📊 {t('dashboard', lang)}", f"⚙ {t('settings', lang)}"],
-        [f"📢 {t('announcements', lang)}", f"🤖 {t('agents', lang)}"],
-        [f"✅ {t('tasks', lang)}", f"🛡 {t('moderation', lang)}"],
-        [f"💳 {t('subscriptions', lang)}", f"❓ {t('help', lang)}"],
-        [f"🌐 {t('language', lang)}"],
+        [f"👥 {t('members', lang)}", f"🤖 {t('agents', lang)}"],
+        [f"🌐 {t('language', lang)}", f"❓ {t('help', lang)}"],
     ]
 
 

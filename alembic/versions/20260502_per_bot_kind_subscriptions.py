@@ -16,18 +16,18 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
+    op.execute("DROP INDEX IF EXISTS uq_subscription_requests_one_approved_per_tg_user")
     op.execute("""
-        DROP INDEX IF EXISTS uq_subscription_requests_one_approved_per_tg_user;
         CREATE UNIQUE INDEX uq_subscription_requests_one_approved_per_tg_user_bot_kind
         ON subscription_requests (tg_user_id, bot_kind)
-        WHERE status = 'approved';
+        WHERE status = 'approved'
     """)
 
 
 def downgrade() -> None:
+    op.execute("DROP INDEX IF EXISTS uq_subscription_requests_one_approved_per_tg_user_bot_kind")
     op.execute("""
-        DROP INDEX IF EXISTS uq_subscription_requests_one_approved_per_tg_user_bot_kind;
         CREATE UNIQUE INDEX uq_subscription_requests_one_approved_per_tg_user
         ON subscription_requests (tg_user_id)
-        WHERE status = 'approved';
+        WHERE status = 'approved'
     """)

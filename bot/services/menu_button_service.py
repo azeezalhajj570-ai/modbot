@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import logging
+
 from aiogram import Bot
+from aiogram.exceptions import TelegramBadRequest
 from aiogram.types import MenuButtonCommands, MenuButtonWebApp, WebAppInfo
 from urllib.parse import urlsplit, urlunsplit
 
@@ -55,15 +58,21 @@ def resolve_webapp_url(app_kind: AppKind | None = None) -> str | None:
     return f"{base_url}/{suffix}"
 
 
+logger = logging.getLogger(__name__)
+
+
 async def configure_private_chat_menu_button(*, bot: Bot, user_id: int, enabled: bool, app_kind: AppKind | None = None) -> None:
     webapp_url = resolve_webapp_url(app_kind)
     if enabled and webapp_url:
-        await bot.set_chat_menu_button(
-            chat_id=user_id,
-            menu_button=MenuButtonWebApp(
-                text="Open App",
-                web_app=WebAppInfo(url=webapp_url),
-            ),
-        )
-        return
+        try:
+            await bot.set_chat_menu_button(
+                chat_id=user_id,
+                menu_button=MenuButtonWebApp(
+                    text="Open App",
+                    web_app=WebAppInfo(url=webapp_url),
+                ),
+            )
+            return
+        except TelegramBadRequest:
+            logger.warning("Failed to set webapp menu button (URL may be HTTP): %s", webapp_url)
     await bot.set_chat_menu_button(chat_id=user_id, menu_button=MenuButtonCommands())
