@@ -4,8 +4,8 @@ COPY miniapps/modbot/package*.json ./
 RUN --mount=type=cache,target=/root/.npm \
     npm install
 COPY miniapps/modbot .
-COPY miniapps/shared /miniapp-shared
-RUN ln -s /app/node_modules /miniapp-shared/node_modules && \
+COPY miniapps/shared ./miniapp-shared
+RUN ln -s /app/node_modules ./miniapp-shared/node_modules && \
     npx vite build --outDir dist
 
 FROM nginx:alpine

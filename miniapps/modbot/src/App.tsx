@@ -331,7 +331,6 @@ const AppInner: React.FC = () => {
         <div className="space-y-4">
           <span className="material-symbols-outlined text-6xl text-primary/20">group_off</span>
           <h2 className="text-xl font-bold">{t('no_group.title')}</h2>
-          <p className="text-on-secondary-container">{t('no_group.desc')}</p>
         </div>
       </div>
     )

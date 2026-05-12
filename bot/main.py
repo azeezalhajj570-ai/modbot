@@ -45,17 +45,31 @@ async def _configure_bot_commands(bot: Bot, app_kind: AppKind = "admin") -> None
     else:
         private_commands = [
             BotCommand(command="start", description="Open the main menu"),
+            BotCommand(command="menu", description="Open the main navigation menu"),
             BotCommand(command="help", description="Show help"),
             BotCommand(command="lang", description="Switch language"),
             BotCommand(command="subscribe", description="Request access"),
+            BotCommand(command="stats", description="Group dashboard and analytics"),
+            BotCommand(command="events", description="Review moderation events"),
+            BotCommand(command="restricted", description="Manage restricted users"),
+            BotCommand(command="task", description="Manage automation tasks"),
+            BotCommand(command="schedule", description="Manage scheduled messages"),
+            BotCommand(command="modsettings", description="Configure moderation settings"),
+            BotCommand(command="warnings", description="Manage warning settings"),
+            BotCommand(command="accessgate", description="Configure group access gate"),
+            BotCommand(command="subscriptions", description="Manage subscriptions"),
         ]
         admin_commands = [
             BotCommand(command="help", description="Show help"),
             BotCommand(command="lang", description="Switch language"),
+            BotCommand(command="menu", description="Open the main navigation menu"),
             BotCommand(command="registergroup", description="Register this group"),
             BotCommand(command="ban", description="Ban a replied user"),
             BotCommand(command="unban", description="Unban a replied user"),
             BotCommand(command="mute", description="Mute a replied user"),
+            BotCommand(command="stats", description="Group dashboard and analytics"),
+            BotCommand(command="restricted", description="Manage restricted users"),
+            BotCommand(command="warnings", description="Manage warning settings"),
         ]
 
     await bot.set_my_commands(
