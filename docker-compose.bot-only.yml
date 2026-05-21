@@ -1,0 +1,71 @@
+services:
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: alembic upgrade head
+    env_file: .env
+    networks:
+      - madarbot_default
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@madarbot-postgres-1:5432/modbotprod
+      REDIS_URL: redis://madarbot-redis-1:6379/4
+
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python -m bot.main
+    env_file: .env
+    networks:
+      - madarbot_default
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      BOT_APP_KIND: admin
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@madarbot-postgres-1:5432/modbotprod
+      REDIS_URL: redis://madarbot-redis-1:6379/4
+      DEFAULT_LANGUAGE: ar
+      AIROGRAM_LOG_LEVEL: WARNING
+      LOG_RAW_UPDATES: "false"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: dramatiq bot.workers.tasks
+    env_file: .env
+    networks:
+      - madarbot_default
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@madarbot-postgres-1:5432/modbotprod
+      REDIS_URL: redis://madarbot-redis-1:6379/4
+      DEFAULT_LANGUAGE: ar
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    env_file: .env
+    networks:
+      - madarbot_default
+    ports:
+      - "8001:8080"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      BOT_APP_KIND: admin
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@madarbot-postgres-1:5432/modbotprod
+      REDIS_URL: redis://madarbot-redis-1:6379/4
+      DEFAULT_LANGUAGE: ar
+
+networks:
+  madarbot_default:
+    external: true

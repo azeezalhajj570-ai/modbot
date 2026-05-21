@@ -2,7 +2,7 @@ from __future__ import annotations
 
 TRANSLATIONS: dict[str, dict[str, str]] = {
     "en": {
-        "start_intro": "Welcome to Combot — your intelligent Telegram group management platform.\n\nI can help you:\n• Moderate groups with warnings, mutes, bans\n• Protect against spam, links, ads, and bots\n• Schedule announcements and bulk messages\n• Assign automated reply and notify tasks\n• Link agent accounts for delegated actions\n\nUse /help for commands or open the WebApp dashboard for full control.",
+        "start_intro": "Welcome to ModBot — your intelligent Telegram group management bot.\n\nI can help you:\n• Moderate groups with warnings, mutes, bans\n• Protect against spam, links, ads, and bots\n• Schedule announcements and bulk messages\n• Assign automated reply and notify tasks\n• Link agent accounts for delegated actions\n\nUse /help for commands or open the WebApp dashboard for full control.",
         "main_menu": "Main Menu",
         "dashboard": "Dashboard",
         "moderation": "Moderation",
@@ -137,7 +137,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "scraper_open_prompt": "Open the scraper in the Telegram dashboard.",
         "settings_open_prompt": "Open settings in the Telegram dashboard.",
         "dashboard_not_configured": "Dashboard URL is not configured yet.",
-        "help_text": "Commands:\n/start\n/dashboard\n/scraper\n/settings\n/help\n/lang\n\nUse /dashboard to open the admin WebApp.",
+        "help_text": "Commands:\n/start — Open main menu\n/menu — Navigation menu\n/help — Show this help\n/lang — Switch language\n/subscribe — Request access\n/stats — Group dashboard & analytics\n/events — Review moderation events\n/restricted — Manage restricted users\n/task — Manage automation tasks\n/schedule — Manage scheduled messages\n/modsettings — Configure moderation settings\n/warnings — Manage warning settings\n/accessgate — Configure group access gate\n/subscriptions — Manage subscriptions\n\nAdmins in groups:\n/registergroup — Register this group\n/ban — Ban a user\n/unban — Unban a user\n/mute — Mute a user\n\nUse the menu buttons or WebApp dashboard for full control.",
         "agents_main_menu": "Agent Bot Menu",
         "agents_help_text": "Commands:\n/start\n/help\n/lang\n\nUse the menu button below to open the Agents Miniapp.",
         "subscription_mandate_prompt": "To interact with this bot, send /subscribe so the owner can review your request.",
@@ -427,7 +427,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "no_groups_found": "No managed groups found.",
     },
     "ar": {
-        "start_intro": "مرحباً بك في Combot — منصة إدارة مجموعات تيليجرام الذكية.\n\nيمكنني مساعدتك في:\n• إدارة المجموعات عبر التحذيرات والكتم والحظر\n• الحماية من السبام والروابط والإعلانات والبوتات\n• جدولة الإعلانات والرسائل الجماعية\n• تعيين مهام الرد التلقائي والإشعارات\n• ربط حسابات الوكلاء للإجراءات المفوضة\n\nاستخدم /help للأوامر أو افتح لوحة التحكم للإدارة الكاملة.",
+        "start_intro": "مرحباً بك في ModBot — بوت إدارة مجموعات تيليجرام الذكي.\n\nيمكنني مساعدتك في:\n• إدارة المجموعات عبر التحذيرات والكتم والحظر\n• الحماية من السبام والروابط والإعلانات والبوتات\n• جدولة الإعلانات والرسائل الجماعية\n• تعيين مهام الرد التلقائي والإشعارات\n• ربط حسابات الوكلاء للإجراءات المفوضة\n\nاستخدم /help للأوامر أو افتح لوحة التحكم للإدارة الكاملة.",
         "main_menu": "القائمة الرئيسية",
         "dashboard": "لوحة التحكم",
         "moderation": "الإشراف",
@@ -562,7 +562,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "scraper_open_prompt": "افتح قسم السحب داخل لوحة التحكم.",
         "settings_open_prompt": "افتح قسم الإعدادات داخل لوحة التحكم.",
         "dashboard_not_configured": "رابط لوحة التحكم غير مضبوط بعد.",
-        "help_text": "الأوامر:\n/start\n/dashboard\n/scraper\n/settings\n/help\n/lang\n\nاستخدم /dashboard لفتح لوحة الإدارة.",
+        "help_text": "الأوامر:\n/start — فتح القائمة الرئيسية\n/menu — قائمة التنقل\n/help — عرض هذه المساعدة\n/lang — تبديل اللغة\n/subscribe — طلب الوصول\n/stats — لوحة تحكم المجموعة وتحليلاتها\n/events — مراجعة أحداث الإشراف\n/restricted — إدارة المستخدمين المقيدين\n/task — إدارة مهام الأتمتة\n/schedule — إدارة الرسائل المجدولة\n/modsettings — إعدادات الإشراف\n/warnings — إدارة إعدادات التحذيرات\n/accessgate — إعداد بوابة العضوية\n/subscriptions — إدارة الاشتراكات\n\nالمشرفون في المجموعات:\n/registergroup — تسجيل هذه المجموعة\n/ban — حظر مستخدم\n/unban — إلغاء حظر مستخدم\n/mute — كتم مستخدم\n\nاستخدم أزرار القائمة أو لوحة التحكم للإدارة الكاملة.",
         "agents_main_menu": "قائمة بوت الوكلاء",
         "agents_help_text": "الأوامر:\n/start\n/help\n/lang\n\nاستخدم زر القائمة أدناه لفتح تطبيق الوكلاء.",
         "subscription_mandate_prompt": "للتفاعل مع هذا البوت، أرسل /subscribe حتى يراجع المالك طلبك.",

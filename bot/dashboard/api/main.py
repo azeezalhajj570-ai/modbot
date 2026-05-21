@@ -43,7 +43,7 @@ async def lifespan(app: FastAPI):
         await redis.aclose()
 
 
-app = FastAPI(title="Combot Dashboard API", version="1.1.0", lifespan=lifespan)
+app = FastAPI(title="ModBot Dashboard API", version="1.1.0", lifespan=lifespan)
 
 settings = get_settings()
 app.state.redis = Redis.from_url(settings.redis_url, decode_responses=True)
@@ -131,7 +131,7 @@ app.include_router(internal_router, prefix="/api/internal")
 @app.get("/")
 async def root() -> dict[str, str]:
     return {
-        "service": "combot-dashboard-api",
+        "service": "modbot-dashboard-api",
         "status": "ok",
         "health": "/health",
         "webapp_admin": "/webapp/admin",
@@ -157,7 +157,7 @@ async def stripe_publishable_key() -> dict[str, str | None]:
     return {"publishable_key": settings.stripe_publishable_key}
 
 
-@app.get("/combot-dashboard-api")
+@app.get("/modbot-dashboard-api")
 async def service_root() -> dict[str, str]:
     return await root()
 

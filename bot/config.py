@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     gemini_api_key: str | None = Field(default=None, alias="GEMINI_API_KEY")
     openrouter_api_key: str | None = Field(default=None, alias="OPENROUTER_API_KEY")
     openrouter_app_url: str | None = Field(default=None, alias="OPENROUTER_APP_URL")
-    openrouter_app_title: str = Field(default="Combot", alias="OPENROUTER_APP_TITLE")
+    openrouter_app_title: str = Field(default="ModBot", alias="OPENROUTER_APP_TITLE")
     ai_provider: str = Field(default="heuristic", alias="AI_PROVIDER")
     ai_spam_detection_enabled: bool = Field(default=False, alias="AI_SPAM_DETECTION_ENABLED")
     ai_receptionist_enabled: bool = Field(default=False, alias="AI_RECEPTIONIST_ENABLED")

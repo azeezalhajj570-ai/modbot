@@ -18,7 +18,7 @@ config = context.config
 def _resolve_sqlalchemy_url() -> str:
     configured_url = config.get_main_option("sqlalchemy.url")
     env_database_url = os.getenv("DATABASE_URL")
-    if env_database_url and configured_url == "postgresql+asyncpg://postgres:postgres@localhost:5432/combot":
+    if env_database_url and configured_url.startswith("postgresql+asyncpg://postgres:postgres@localhost:5432/"):
         return env_database_url
     return configured_url
 

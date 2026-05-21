@@ -143,7 +143,7 @@ async def webapp_agents_stripe_checkout(
                     "price_data": {
                         "currency": "usd",
                         "product_data": {
-                            "name": f"MadarAppBot Agents {plan['label']}",
+                            "name": f"ModBot Agents {plan['label']}",
                             "description": f"{plan['duration_days']}-day access to agents features",
                         },
                         "unit_amount": plan["amount"],

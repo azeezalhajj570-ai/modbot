@@ -1,8 +1,107 @@
 services:
   postgres:
-    ports:
-      - "5432:5432"
+    command: sleep infinity
+    healthcheck:
+      test: ["CMD", "sleep", "1"]
+      interval: 1s
+      timeout: 1s
+      retries: 1
+    ports: []
 
   redis:
+    command: sleep infinity
+    healthcheck:
+      test: ["CMD", "sleep", "1"]
+      interval: 1s
+      timeout: 1s
+      retries: 1
+    ports: []
+
+  migrate:
+    env_file: []
+    depends_on:
+      postgres:
+        condition: service_started
+      redis:
+        condition: service_started
+    networks:
+      - default
+      - madarbot_default
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@madarbot-postgres-1:5432/modbot
+      REDIS_URL: redis://madarbot-redis-1:6379/0
+
+  bot:
+    env_file: []
+    depends_on:
+      postgres:
+        condition: service_started
+      redis:
+        condition: service_started
+      migrate:
+        condition: service_completed_successfully
+    networks:
+      - default
+      - madarbot_default
+    environment:
+      BOT_APP_KIND: admin
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@madarbot-postgres-1:5432/modbot
+      REDIS_URL: redis://madarbot-redis-1:6379/0
+      DEFAULT_LANGUAGE: ar
+      AIROGRAM_LOG_LEVEL: WARNING
+      LOG_RAW_UPDATES: "false"
+
+  worker:
+    env_file: []
+    depends_on:
+      postgres:
+        condition: service_started
+      redis:
+        condition: service_started
+      migrate:
+        condition: service_completed_successfully
+    networks:
+      - default
+      - madarbot_default
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@madarbot-postgres-1:5432/modbot
+      REDIS_URL: redis://madarbot-redis-1:6379/0
+      DEFAULT_LANGUAGE: ar
+
+  agent_worker:
+    env_file: []
+    depends_on:
+      postgres:
+        condition: service_started
+      redis:
+        condition: service_started
+      migrate:
+        condition: service_completed_successfully
+    networks:
+      - default
+      - madarbot_default
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@madarbot-postgres-1:5432/modbot
+      REDIS_URL: redis://madarbot-redis-1:6379/0
+      DEFAULT_LANGUAGE: ar
+
+  backend:
+    env_file: []
+    depends_on:
+      postgres:
+        condition: service_started
+      migrate:
+        condition: service_completed_successfully
     ports:
-      - "6379:6379"
+      - "8002:8080"
+    networks:
+      - default
+      - madarbot_default
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@madarbot-postgres-1:5432/modbot
+      REDIS_URL: redis://madarbot-redis-1:6379/0
+      DEFAULT_LANGUAGE: ar
+
+networks:
+  madarbot_default:
+    external: true

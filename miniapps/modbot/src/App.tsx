@@ -315,7 +315,7 @@ const AppInner: React.FC = () => {
 
   if (!session.identity) {
     return (
-      <div dir={rootDir} className="flex items-center justify-center min-h-screen p-10 text-center" style={{ fontFamily: lang === 'ar' ? "'Noto Kufi Arabic', sans-serif" : 'inherit' }}>
+      <div dir={rootDir} className="flex items-center justify-center min-h-screen p-10 text-center bg-background text-on-surface" style={{ fontFamily: lang === 'ar' ? "'Noto Kufi Arabic', sans-serif" : 'inherit' }}>
         <div className="space-y-4">
           <span className="material-symbols-outlined text-6xl text-primary/20">lock</span>
           <h2 className="text-xl font-bold">{t('auth.required')}</h2>
@@ -327,7 +327,7 @@ const AppInner: React.FC = () => {
 
   if (!selectedGroup) {
     return (
-      <div dir={rootDir} className="flex items-center justify-center min-h-screen p-10 text-center" style={{ fontFamily: lang === 'ar' ? "'Noto Kufi Arabic', sans-serif" : 'inherit' }}>
+      <div dir={rootDir} className="flex items-center justify-center min-h-screen p-10 text-center bg-background text-on-surface" style={{ fontFamily: lang === 'ar' ? "'Noto Kufi Arabic', sans-serif" : 'inherit' }}>
         <div className="space-y-4">
           <span className="material-symbols-outlined text-6xl text-primary/20">group_off</span>
           <h2 className="text-xl font-bold">{t('no_group.title')}</h2>
